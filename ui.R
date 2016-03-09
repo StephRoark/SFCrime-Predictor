@@ -43,7 +43,13 @@ shinyUI(
                                          br(),
                                          br(),
                                          p("Click on the Predictions or Crime Density tab to begin using the app. The maps may take a moment to load. 
-                                           Select the desired inputs to view the crime predictions and density maps.")
+                                           Select the desired inputs to view the crime predictions and density maps. The Predictions map can be zoomed 
+                                           in or out, but a selection must be made within San Francisco or no predition will be made."),
+                                         br(),
+                                         br(),
+                                         p("Code available at ",
+                                             a("Github. ",
+                                           href = "https://github.com/StephRoark/SFCrime-Predictor"))
                                          ),
                                 tabPanel("Future Features",
                                          h2("Possible Future Features"),
