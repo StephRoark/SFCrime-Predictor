@@ -13,7 +13,7 @@ location <-  c(left, bottom, right, top)
 
 timeBins <- c("Morning", "Afternoon", "Evening", "LateNight")
 
-sf_crime_preds <- read_csv("sfcrimepreds.csv.gz")
+sf_crime_preds <- read_csv("sfcrimepreds.csv.gz",progress=TRUE)
 
 shinyServer(function(input, output, session) {
     
