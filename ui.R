@@ -14,6 +14,25 @@ shinyUI(
                             ),
                             navlistPanel(
                                 "Summary",
+                                tabPanel("Using the App",
+                                         h2("Using the SF Crime Predictor App"),
+                                         br(),
+                                         br(),
+                                         p("Click on the Predictions or Crime Density tab to begin using the app."),
+                                         p("The maps may take a moment to load."),
+                                         br(),
+                                         p("For the Crime Prediction map, click on the map of San Francisco to make a prediction for the top 5 crime predictions 
+                                            for that location. The inputs for month, day and time 
+                                            of day can be varied individually to view the crime predictions and probabilities for each selection. 
+                                            The Predictions map can be zoomed in or out, but a selection must be made within San Francisco or no predition will be made."),
+                                         br(),
+                                         p("For the Crime Density map, select the crime category to view the density maps for each crime type."),
+                                         br(),
+                                         br(),
+                                         p("Code available at ",
+                                           a("Github. ",
+                                             href = "https://github.com/StephRoark/SFCrime-Predictor"))
+                                         ),
                                 tabPanel("Predictions",
                                          h2("Crime Predictions Map"),
                                          br(), 
@@ -38,19 +57,6 @@ shinyUI(
                                            by renters considering where to live or by a neighborhood watch organization wanting to be 
                                            informed of the likelihood of a particular crime occuring near their homes.")
                                 ),
-                                tabPanel("Using the App",
-                                         h2("Using the SF Crime Predictor App"),
-                                         br(),
-                                         br(),
-                                         p("Click on the Predictions or Crime Density tab to begin using the app. The maps may take a moment to load. 
-                                           Select the desired inputs to view the crime predictions and density maps. The Predictions map can be zoomed 
-                                           in or out, but a selection must be made within San Francisco or no predition will be made."),
-                                         br(),
-                                         br(),
-                                         p("Code available at ",
-                                             a("Github. ",
-                                           href = "https://github.com/StephRoark/SFCrime-Predictor"))
-                                         ),
                                 tabPanel("Future Features",
                                          h2("Possible Future Features"),
                                          br(),
