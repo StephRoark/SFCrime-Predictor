@@ -3,7 +3,7 @@ library(dplyr)
 library(lubridate)
 library(readr)
 
-train <- read_csv("train.csv.zip")
+train <- read_csv("train.csv.gz")
 
 # Data cleaning step
 train.final <- train %>%
@@ -53,8 +53,9 @@ rf.model <- h2o.randomForest(x=x, y=y, weights_column = "TrainWeights",
 predictions <- h2o.predict(rf.model, h2o.targets)
 
 # added back to original frame
-preds.with.targets <- h2o.cbind(predictions,h2o.targets)
+preds.with.targets <- h2o.cbind(h2o.round(predictions[,2:40],3), h2o.targets)
 
 # prep data for writing out
 h2o.exportFile(preds.with.targets, paste(getwd(), "sfcrimepreds.csv", sep = "/"), force = TRUE)
 
+h2o.shutdown(prompt=FALSE)
