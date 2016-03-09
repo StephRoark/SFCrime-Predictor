@@ -1,19 +1,58 @@
 library(shiny)
 library(leaflet)
+library(shinythemes)
 
 categories <- c("ARSON", "ASSAULT", "BRIBERY", "BURGLARY", "DRIVING UNDER THE INFLUENCE", "DRUG/NARCOTIC", "EMBEZZLEMENT", "EXTORTION", "FRAUD", "GAMBLING", "LARCENY/THEFT", "PROSTITUTION", "ROBBERY", "SEX OFFENSES FORCIBLE", "SUICIDE", "VEHICLE THEFT")
 
 shinyUI(
-    navbarPage("SF Crime Predictor",
+    navbarPage(theme = shinytheme("spacelab"),
+        "SF Crime Predictor",
                tabPanel("Summary", 
                         fluidPage(
                             titlePanel(
-                                h2("SF Crime Predictor App")
+                                h3("SF Crime Predictor App")
                             ),
-                            sidebarLayout(
-                                sidebarPanel( "Summary"),
-                                mainPanel("main panel")
+                            navlistPanel(
+                                "Summary",
+                                tabPanel("Predictions",
+                                         h2("Crime Predictions Map"),
+                                         br(), 
+                                         br(), 
+                                         p("The Crime Predictions App displays an interactive map of San Francisco which features crime predictions based on 
+                                            location, month, day of week and time of day. By clicking on the map and selecting other inputs, the app makes a 
+                                            prediction for the top 5 crimes that occur at that specific location. The predictions are made using H2O.ai's 
+                                            predictive modeling software with location, month, day of week and time of day as predictors. The user can 
+                                            select the inputs and vary them independently to make new crime predictions for that location. 
+                                            This app could potentially be used for making predictions when a 911 call comes in without additional information. 
+                                            Other possible uses are for renters considering where to live and tourists wanting to have a safe visit. ")
+                                ),
+                                tabPanel("Crime Density",
+                                         h2("Crime Density Maps"),
+                                         br(),
+                                         br(),
+                                         p("The SF Crime App displays a map of San Francisco with a crime density plot overalyed. 
+                                            The app allows the user to choose a crime category and then displays the density of that 
+                                            crime over a map of San Francisco. 
+                                            The darker color indicates a higher concentration of the specific crime in that location.
+                                            These maps could potentially be used by tourists for for a safe visit to SF, 
+                                           by renters considering where to live or by a neighborhood watch organization wanting to be 
+                                           informed of the likelihood of a particular crime occuring near their homes.")
+                                ),
+                                tabPanel("Using the App",
+                                         h2("Using the SF Crime Predictor App"),
+                                         br(),
+                                         br(),
+                                         p("Click on the Predictions or Crime Density tab to begin using the app. The maps may take a moment to load. 
+                                           Select the desired inputs to view the crime predictions and density maps.")
+                                         ),
+                                tabPanel("Future Features",
+                                         h2("Possible Future Features"),
+                                         br(),
+                                         br(),
+                                         p("Furture features include predictions for crime based on weather data, presence of homeless population, PD District and income level.")
+                                )
                             )
+                            
                         )),
                  tabPanel("Predictions", 
                           sidebarLayout(
@@ -43,7 +82,7 @@ shinyUI(
                                   leafletOutput("map1")
                               )   )
                  ), 
-                 tabPanel("Crime Heatmaps", 
+                 tabPanel("Crime Density", 
                           sidebarLayout(
                               sidebarPanel(
                                   helpText("Choose a crime category to explore the maps."),
